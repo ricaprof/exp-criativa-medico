@@ -1,2 +1,2 @@
 Apos mudar o Modelfile eu tenho que treinar novamente o Modelo
-ollama create meu-tutor-bio -f Modelfile
+ollama create meu-tutor-gemma -f Modelfile

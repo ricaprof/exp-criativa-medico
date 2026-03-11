@@ -1,4 +1,6 @@
 import os
+import time
+import re
 from langchain_community.vectorstores import FAISS
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_ollama import OllamaLLM
@@ -6,72 +8,94 @@ from langchain_community.document_loaders import DirectoryLoader, TextLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 # --- 1. DEFINIÇÃO DOS MODELOS ---
-# Aqui defines qual modelo o Ollama vai usar e qual modelo fará a leitura dos ficheiros.
-# Para rodar com a versão quantizada em Q4_K_M, ajustamos ambos a seguir.
-# O nome usado em `OllamaLLM` deve corresponder ao modelo instalado (p.ex. "biomistral-7b-gguf-q4_k_m").
-NOME_MODELO_OLLAMA = "meu-tutor-bio"  # ex: "llama3" ou "deepseek-r1" também são válidos
-# Modelo de embeddings (use um modelo compatível com sentence-transformers,
-# por exemplo "all-MiniLM-L6-v2" ou outro da biblioteca HuggingFace).  
-# A versão Q4_K_M não é válida para embeddings e apenas serve ao LLM quantizado.
+# Nome do modelo criado via Modelfile para o Gemma 3
+NOME_MODELO_OLLAMA = "meu-tutor-gemma" 
 MODELO_EMBEDDINGS = "sentence-transformers/all-MiniLM-L6-v2"
 
-# --- 2. CONFIGURAÇÃO DA BASE DE DADOS LOCAL ---
-# Altera para o caminho da pasta onde estão os teus documentos no teu PC
-CAMINHO_DOCUMENTOS_LOCAL = r"C:\TeuCaminho\Para\Os\Arquivos"
-# Caminho onde o índice FAISS será guardado (base de dados processada)
+# --- 2. CONFIGURAÇÃO DE CAMINHOS ---
+CAMINHO_DOCUMENTOS_LOCAL = r"C:\Users\cryst\.ollama\meu-tutor\meu-tutor\documentos"
 DB_LOCAL_STORAGE = "vectorstore/db_faiss"
+ARQUIVO_PERGUNTAS = "perguntas.txt"
+ARQUIVO_RESPOSTAS = "respostas.txt"
 
 def criar_base_conhecimento():
     """Lê os ficheiros locais e transforma em base de dados para a IA"""
-    print(f"A processar documentos de: {CAMINHO_DOCUMENTOS_LOCAL}")
-    
-    # Carregador de diretório (ajusta o glob conforme a extensão dos teus ficheiros)
+    print(f"Processando documentos de: {CAMINHO_DOCUMENTOS_LOCAL}")
     loader = DirectoryLoader(CAMINHO_DOCUMENTOS_LOCAL, glob="**/*.txt", loader_cls=TextLoader)
     documentos = loader.load()
 
-    # Divisão do texto em partes menores
     text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=100)
     textos = text_splitter.split_documents(documentos)
 
-    # Inicializa o modelo de embeddings (o que "entende" o significado das palavras)
     embeddings = HuggingFaceEmbeddings(model_name=MODELO_EMBEDDINGS)
-    
-    # Cria o banco de dados vetorial e guarda localmente
     vectorstore = FAISS.from_documents(textos, embeddings)
     vectorstore.save_local(DB_LOCAL_STORAGE)
     return vectorstore
 
 def inicializar_ia():
     embeddings = HuggingFaceEmbeddings(model_name=MODELO_EMBEDDINGS)
-    
-    # Se a base já existir, carrega-a. Se não, cria uma nova do zero.
     if os.path.exists(DB_LOCAL_STORAGE):
         vectorstore = FAISS.load_local(DB_LOCAL_STORAGE, embeddings, allow_dangerous_deserialization=True)
     else:
         vectorstore = criar_base_conhecimento()
 
-    # Define o modelo LLM através do Ollama
-    llm = OllamaLLM(model=NOME_MODELO_OLLAMA)
-    
-    return vectorstore.as_retriever(), llm
+    # Configuração otimizada para Gemma 3 4B na RTX 3050
+    llm = OllamaLLM(
+        model=NOME_MODELO_OLLAMA,
+        temperature=0,
+        num_ctx=2048,
+        stop=["<end_of_turn>", "SINTOMAS:"]
+    )
+    return vectorstore.as_retriever(search_kwargs={"k": 2}), llm
 
+def limpar_resposta(texto):
+    """Remove emojis e caracteres especiais não técnicos da resposta"""
+    # Remove emojis e símbolos especiais (Unicode range de emojis)
+    texto_limpo = re.sub(r'[^\x00-\x7f]', r'', texto)
+    return texto_limpo.strip()
 if __name__ == "__main__":
     retriever, llm = inicializar_ia()
     
-    pergunta = input("O que desejas saber sobre a tua base de dados? ")
-    
-    # Recupera contexto dos teus ficheiros
-    contexto_docs = retriever.invoke(pergunta)
-    contexto_texto = "\n".join([doc.page_content for doc in contexto_docs])
-    
-    # Prompt REFORMULADO para ser agressivo na extração
-    prompt = f"""
-    [CONTEXTO TÉCNICO]:
-    {contexto_texto}
+    # IMPORTANTE: Mude o nome para o novo modelo criado
+    NOME_MODELO_OLLAMA = "analisador-med"
 
-    Sintomas do Usuário: {pergunta}
-    Ação: Retorne apenas o nome do fármaco, mecanismo e analogia IoT conforme o Modelfile.
-    Resposta:"""
-    
-    print("\n--- Resposta da IA ---")
-    print(llm.invoke(prompt))
+    if not os.path.exists(ARQUIVO_PERGUNTAS):
+        print(f"\n[ERRO] Crie o arquivo '{ARQUIVO_PERGUNTAS}' com os pares (ex: Aspirina + Varfarina).")
+    else:
+        with open(ARQUIVO_PERGUNTAS, "r", encoding="utf-8") as f:
+            lista_pares = [linha.strip() for linha in f.readlines() if linha.strip()]
+
+        print(f"\nIniciando análise de {len(lista_pares)} interações...")
+        resultados = []
+
+        # REMOVIDO O LOOP DUPLICADO
+        for i, par in enumerate(lista_pares, 1):
+            print(f"[{i}/{len(lista_pares)}] Analisando: {par}...")
+            
+            try:
+                # O retriever PRECISA buscar um novo contexto para cada par!
+                docs = retriever.invoke(f"Interação entre {par}")
+                contexto = "\n".join([d.page_content for d in docs])
+                
+                # Prompt limpo para o analisador-med
+                prompt = f"Verificar compatibilidade: {par}\nCONTEXTO: {contexto}"
+                
+                # CHAMA A IA UMA VEZ
+                resposta_ia = llm.invoke(prompt)
+                
+                # Limpa emojis e símbolos não-técnicos
+                resposta_final = limpar_resposta(resposta_ia)
+                
+                bloco = f"PAR ANALISADO: {par}\nAVALIAÇÃO: {resposta_final}\n{'-'*60}\n"
+                resultados.append(bloco)
+                
+                time.sleep(0.5) 
+
+            except Exception as e:
+                print(f"Erro no par {i}: {e}")
+
+        # Salva o relatório final após sair do loop
+        with open(ARQUIVO_RESPOSTAS, "w", encoding="utf-8") as f_out:
+            f_out.writelines(resultados)
+        
+        print(f"\n[SUCESSO] Análise concluída! Verifique o arquivo: {ARQUIVO_RESPOSTAS}")

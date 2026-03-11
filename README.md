@@ -1,121 +1,101 @@
-# Medical Prescription AI
+Medical Prescription AI: Analisador de Compatibilidade
+Este projeto consiste em um sistema de Inteligência Artificial para análise e comparação farmacológica. Utilizando técnicas de RAG (Retrieval-Augmented Generation), o sistema consulta uma base de dados real de medicamentos para verificar interações medicamentosas e explicar por que dois fármacos podem ou não ser administrados juntos.
 
-Sistema de **Inteligência Artificial para recomendação de medicamentos** baseado em dados de saúde.  
-O objetivo do projeto é utilizar um **dataset real de medicamentos** para construir um modelo capaz de sugerir possíveis tratamentos com base em sintomas ou condições médicas.
+ Aviso Importante: Este projeto possui finalidade estritamente educacional e de pesquisa. Os resultados gerados são simulações baseadas em dados e não devem ser utilizados para diagnóstico ou prescrição médica real. Sempre consulte um profissional de saúde.
 
->  **Aviso:** Este projeto possui finalidade **educacional e de pesquisa**. Não deve ser utilizado para diagnóstico ou prescrição médica real.
+Objetivo
+Desenvolver um motor de busca inteligente capaz de:
 
----
+Analisar Pareamentos: Verificar se dois medicamentos são compatíveis ou se geram conflito.
 
-#  Objetivo
+Exposição Técnica: Explicar o mecanismo bioquímico da interação (ex: inibição enzimática, receptores).
 
-Este projeto tem como objetivo desenvolver um sistema de IA capaz de:
+Tradução Conceitual: Gerar analogias com o mundo de IoT e Engenharia de Hardware para facilitar o entendimento técnico dos mecanismos.
 
-- Analisar **informações estruturadas sobre medicamentos**
-- Identificar **possíveis usos terapêuticos**
-- Sugerir **medicamentos candidatos para determinadas condições**
-- Futuramente verificar **interações medicamentosas**
-- Explorar o uso de **Machine Learning e NLP em dados de saúde**
+Busca Semântica: Utilizar uma base de conhecimento local para evitar "alucinações" da IA.
 
----
+Base de Dados (Dataset)
+O projeto utiliza o DRUG INTERACTIONS DATA, que provê uma base sólida com:
 
-#  Dataset
+~1.000.000 de interações medicas.
 
-O projeto utiliza o dataset:
+- **Name & Composition:** Identificação de princípios ativos para cruzamento de dados.
+- **Therapeutic & Chemical Class:** Classificação para identificação de redundância terapêutica (ex: tomar dois AINES juntos).
+- **Side Effects:** Base de dados para identificar reações adversas potencializadas por interações.
+- **Usage Instructions:** Contexto sobre administração para evitar conflitos de absorção.
 
-**Medicines Information Dataset (MID)**
+Fonte: DruhBank
 
-Este dataset contém aproximadamente:
+🏗️ Arquitetura do Sistema
+O sistema é estruturado em três camadas principais:
 
-- **192.000 medicamentos**
-- Informações como:
-  - Nome do medicamento
-  - Classe terapêutica
-  - Composição
-  - Benefícios
-  - Efeitos colaterais
-  - Instruções de uso
-  - Classe química
+1️⃣ Processamento e Vetorização (RAG)
+Document Loading: Leitura de arquivos .txt contendo o conhecimento farmacológico.
 
- Fonte do dataset:  
-https://data.mendeley.com/datasets/2vk5khfn6v/1
+Vetorização: Uso do modelo all-MiniLM-L6-v2 para transformar textos em vetores matemáticos.
 
----
+Vector Store: Armazenamento e busca eficiente de similaridade utilizando FAISS.
 
-#  Arquitetura do Sistema
+2️⃣ Motor de Inferência (Local LLM)
+Utilizamos o Ollama para rodar modelos de linguagem de ponta localmente, garantindo privacidade e performance:
 
-O sistema será dividido em três componentes principais:
+Gemma 3 (4B): Modelo principal para extração técnica e lógica.
 
-## 1️⃣ Data Processing
+Llama 3: Alternativa para processamento de linguagem natural.
 
-Responsável por:
+DeepSeek-R1: Utilizado para raciocínio lógico complexo em interações.
 
-- Limpeza do dataset
-- Normalização de textos
-- Extração de features
-- Transformação para formato utilizável pelo modelo
+3️⃣ Filtro de Saída e Higienização
+Limpeza ASCII: Script em Python que remove emojis e caracteres especiais para manter o relatório estritamente técnico e legível em qualquer terminal.
 
-Tecnologias possíveis:
+🔄 Fluxo de Funcionamento
+Plaintext
+Entrada (Remédio A + Remédio B)
+       │
+       ▼
+Busca Semântica (Base de Dados FAISS)
+       │
+       ▼
+Recuperação de Contexto Técnico
+       │
+       ▼
+Prompt Engineering (Modelfile Customizado)
+       │
+       ▼
+Inferência no Gemma 3 (Ollama)
+       │
+       ▼
+Filtro de Limpeza (Python Regex)
+       │
+       ▼
+Saída: **[STATUS]** | Motivo Técnico | Analogia IoT
+ Tecnologias Utilizadas
+Linguagem: Python 3.10+
 
-- Python
-- Pandas
-- NumPy
-- Scikit-learn
+IA/LLM: Ollama (Gemma 3, Llama 3, DeepSeek)
 
----
+Framework RAG: LangChain
 
-## 2️⃣ Modelo de IA
+Banco Vetorial: FAISS
 
-Responsável por:
+Processamento de Dados: Pandas, Re (Regex)
 
-- Processar sintomas ou descrições de condições médicas
-- Comparar com os dados dos medicamentos
-- Retornar possíveis recomendações
+Hardware Otimizado: Suporte para aceleração via GPU (NVIDIA RTX 3050 via CUDA)
 
-Abordagens possíveis:
+📝 Exemplo de Saída Técnica
+PAR ANALISADO: Varfarina + Aspirina
 
-- NLP com **TF-IDF**
-- **Embeddings semânticos**
-- Classificação supervisionada
-- Similaridade textual
+AVALIAÇÃO: [CONFLITO DETECTADO] | Motivo técnico: A aspirina inibe a agregação plaquetária enquanto a varfarina antagoniza a vitamina K. A administração conjunta potencializa o risco de hemorragias severas. | Analogia IoT: É como um conflito de interrupção (IRQ) onde dois dispositivos tentam acessar o barramento de controle simultaneamente, causando corrupção de dados e falha crítica no sistema.
 
-Bibliotecas possíveis:
+Como Rodar o Projeto
+Certifique-se de ter o Ollama instalado.
 
-- Scikit-learn
-- TensorFlow / PyTorch
-- Sentence Transformers
+Crie o modelo customizado: ollama create analisador-med -f Modelfile.
 
+Adicione suas notas na pasta /documentos.
 
-#Modelos de IA usados:
+Execute o motor principal: python cerebro.py.
 
-- ollama run hf.co/BioMistral/BioMistral-7B-GGUF:Q4_K_M
-- ollama run llama3
-- ollama run deepseek-ri
+Desenvolvido por: Crystofer Samuel, Murilo Chandelier, Ricardo Viena e Ricardo Ryu
 
-
-# 🔄 Fluxo do Sistema
-
-```text
-Usuário
-   │
-   ▼
-Entrada de sintomas / condição médica
-   │
-   ▼
-Processamento NLP
-   │
-   ▼
-Modelo de IA
-   │
-   ▼
-Busca no dataset de medicamentos
-   │
-   ▼
-Sugestão de possíveis medicamentos
-
-```
-
-
-
-
-   
+Área: Inteligência Artificial Aplicada à Saúde e Engenharia.
