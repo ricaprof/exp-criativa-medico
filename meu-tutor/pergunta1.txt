@@ -1,0 +1,35 @@
+Lepirudin + Apixaban
+Lepirudin + Dabigatran
+Lepirudin + Dasatinib
+Lepirudin + Deferasirox
+Lepirudin + Ursodeoxycholic acid
+Lepirudin + Glycochenodeoxycholic acid
+Lepirudin + Cholic Acid
+Lepirudin + Glycocholic acid
+Lepirudin + Deoxycholic acid
+Lepirudin + Taurocholic acid
+Lepirudin + Obeticholic acid
+Lepirudin + Chenodeoxycholic acid
+Lepirudin + Taurochenodeoxycholic acid
+Lepirudin + Tauroursodeoxycholic acid
+Lepirudin + Bamet-UD2
+Lepirudin + Dehydrocholic acid
+Lepirudin + Hyodeoxycholic acid
+Lepirudin + Edoxaban
+Lepirudin + Ibrutinib
+Lepirudin + Obinutuzumab
+Lepirudin + Apixaban
+Lepirudin + Amoxicillin
+Lepirudin + Loratadine
+Lepirudin + Vitamin C
+Lepirudin + Omeprazole
+Lepirudin + Paracetamol
+Lepirudin + Cetirizine
+Lepirudin + Simethicone
+Lepirudin + Melatonin
+Lepirudin + B-Complex
+Lepirudin + Zinc
+Lepirudin + Bromopride
+Lepirudin + Simvastatin
+Lepirudin + Metformin
+Lepirudin + Folic Acid

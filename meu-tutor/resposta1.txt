@@ -1,0 +1,140 @@
+PAR: Lepirudin + Apixaban
+--------------------
+**[CONFLITO DETECTADO]** | O apixabano pode potencializar os efeitos anticoagulantes do lepirudina.
+------------------------------------------------------------
+PAR: Lepirudin + Dabigatran
+--------------------
+**[CONFLITO DETECTADO]** | A combinação de Dabigatran etexilate e Lepirudin apresenta risco aumentado de hemorragia. O Dabigatran etexilate pode potencializar a atividade anticoagulante do Lepirudin, elevando a probabilidade e/ou a gravidade de eventos hemorrágicos.
+------------------------------------------------------------
+PAR: Lepirudin + Dasatinib
+--------------------
+**[CONFLITO DETECTADO]** | A combinação de Dasatinib com Lepirudin apresenta risco aumentado de hemorragias e hemorragias graves.
+------------------------------------------------------------
+PAR: Lepirudin + Deferasirox
+--------------------
+**[CONFLITO DETECTADO]** | A combinação de Lepirudin e Deferasirox aumenta o risco ou a gravidade de sangramento gastrointestinal.
+------------------------------------------------------------
+PAR: Lepirudin + Ursodeoxycholic acid
+--------------------
+**[CONFLITO DETECTADO]** | A combinação de Lepirudin com Ursodeoxicálcio ou Tauroursodeoxicálcio aumenta o risco ou a gravidade de sangramento e hematomas.
+------------------------------------------------------------
+PAR: Lepirudin + Glycochenodeoxycholic acid
+--------------------
+**[CONFLITO DETECTADO]** | A combinação de Lepirudin com Ácido Glicochenodeoxicolíico (GDC) apresenta risco aumentado de hemorragia e hematomas.
+------------------------------------------------------------
+PAR: Lepirudin + Cholic Acid
+--------------------
+**[CONFLITO DETECTADO]** | A combinação de Lepirudin com Ursodeoxicólico Ácido ou Glycochenodeoxicólico Ácido está associada ao aumento do risco ou da severidade de sangramento e hematomas.
+------------------------------------------------------------
+PAR: Lepirudin + Glycocholic acid
+--------------------
+**[CONFLITO DETECTADO]** | A combinação de Lepirudin com ácido glicólico apresenta risco aumentado de hemorragia e hematomas.
+------------------------------------------------------------
+PAR: Lepirudin + Deoxycholic acid
+--------------------
+**[CONFLITO DETECTADO]** | A combinação de Lepirudin com Ursodeoxicólico Ácido ou Glycochenodeoxicólico Ácido está associada ao aumento do risco ou da severidade de sangramento e hematomas.
+------------------------------------------------------------
+PAR: Lepirudin + Taurocholic acid
+--------------------
+**[CONFLITO DETECTADO]** | A combinação de Lepirudin com Taurocholic acid aumenta o risco ou a gravidade de sangramentos e hematomas.
+------------------------------------------------------------
+PAR: Lepirudin + Obeticholic acid
+--------------------
+**[CONFLITO DETECTADO]** | A combinação de Lepirudin e Obeticholic acid apresenta risco aumentado de hemorragia e hematomas.
+------------------------------------------------------------
+PAR: Lepirudin + Chenodeoxycholic acid
+--------------------
+**[CONFLITO DETECTADO]** | A combinação de Lepirudin com Ácido Glicochenodeoxicolíico ou Chenodeoxicolíico aumenta o risco ou a gravidade de sangramento e hematomas.
+------------------------------------------------------------
+PAR: Lepirudin + Taurochenodeoxycholic acid
+--------------------
+**[CONFLITO DETECTADO]** | A combinação de Lepirudin com Taurochenodeoxycholic acid apresenta risco aumentado de hemorragia e hematomas, devido ao potencial de interação entre os dois fármacos na modulação da coagulação.
+------------------------------------------------------------
+PAR: Lepirudin + Tauroursodeoxycholic acid
+--------------------
+**[CONFLITO DETECTADO]** | A combinação de Lepirudin com Tauroursodeoxycholic acid apresenta risco aumentado de hemorragia e hematomas.
+------------------------------------------------------------
+PAR: Lepirudin + Bamet-UD2
+--------------------
+**[CONFLITO DETECTADO]** | A combinação de Lepirudin com Bamet-UD2 apresenta risco aumentado de hemorragia e hematomas, devido ao potencial efeito sinérgico na anticoagulação.
+------------------------------------------------------------
+PAR: Lepirudin + Dehydrocholic acid
+--------------------
+**[CONFLITO DETECTADO]** | A combinação de Lepirudin com Dehidrocoólico Ácido aumenta o risco e a severidade de sangramento e hematomas.
+------------------------------------------------------------
+PAR: Lepirudin + Hyodeoxycholic acid
+--------------------
+**[CONFLITO DETECTADO]** | A combinação de Lepirudin com Hyodeoxycholic Acid apresenta risco aumentado de hemorragia e hematomas.
+------------------------------------------------------------
+PAR: Lepirudin + Edoxaban
+--------------------
+**[CONFLITO DETECTADO]** | A combinação de Edoxaban com Lepirudin apresenta risco aumentado de exacerbar o efeito anticoagulante, potencialmente levando a um aumento da severidade do sangramento.
+------------------------------------------------------------
+PAR: Lepirudin + Ibrutinib
+--------------------
+**[CONFLITO DETECTADO]** | A combinação de Ibrutinib com Lepirudin apresenta risco aumentado de hemorragias e hemorragias graves, devido ao potencial efeito sinérgico dos dois fármacos na cascata de coagulação.
+------------------------------------------------------------
+PAR: Lepirudin + Obinutuzumab
+--------------------
+**[CONFLITO DETECTADO]** | A combinação de Lepirudin e Obinutuzumab apresenta risco aumentado de hemorragias e hemorragias graves.
+------------------------------------------------------------
+PAR: Lepirudin + Apixaban
+--------------------
+**[CONFLITO DETECTADO]** | O apixabano pode potencializar os efeitos anticoagulantes do lepirudina.
+------------------------------------------------------------
+PAR: Lepirudin + Amoxicillin
+--------------------
+**[NENHUM CONFLITO DETECTADO]** | Não foram encontradas interações negativas graves nesta base de dados para Lepirudin + Amoxicillin. O uso conjunto geralmente não apresenta contraindicações documentadas aqui, mas requer avaliação clínica individual.
+------------------------------------------------------------
+PAR: Lepirudin + Loratadine
+--------------------
+**[NENHUM CONFLITO DETECTADO]** | Não foram encontradas interações negativas graves nesta base de dados para Lepirudin + Loratadine. O uso conjunto geralmente não apresenta contraindicações documentadas aqui, mas requer avaliação clínica individual.
+------------------------------------------------------------
+PAR: Lepirudin + Vitamin C
+--------------------
+**[NENHUM CONFLITO DETECTADO]** | Não foram encontradas interações negativas graves nesta base de dados para Lepirudin + Vitamin C. O uso conjunto geralmente não apresenta contraindicações documentadas aqui, mas requer avaliação clínica individual.
+------------------------------------------------------------
+PAR: Lepirudin + Omeprazole
+--------------------
+**[NENHUM CONFLITO DETECTADO]** | Não foram encontradas interações negativas graves nesta base de dados para Lepirudin + Omeprazole. O uso conjunto geralmente não apresenta contraindicações documentadas aqui, mas requer avaliação clínica individual.
+------------------------------------------------------------
+PAR: Lepirudin + Paracetamol
+--------------------
+**[NENHUM CONFLITO DETECTADO]** | Não foram encontradas interações negativas graves nesta base de dados para Lepirudin + Paracetamol. O uso conjunto geralmente não apresenta contraindicações documentadas aqui, mas requer avaliação clínica individual.
+------------------------------------------------------------
+PAR: Lepirudin + Cetirizine
+--------------------
+**[NENHUM CONFLITO DETECTADO]** | Não foram encontradas interações negativas graves nesta base de dados para Lepirudin + Cetirizine. O uso conjunto geralmente não apresenta contraindicações documentadas aqui, mas requer avaliação clínica individual.
+------------------------------------------------------------
+PAR: Lepirudin + Simethicone
+--------------------
+**[NENHUM CONFLITO DETECTADO]** | Não foram encontradas interações negativas graves nesta base de dados para Lepirudin + Simethicone. O uso conjunto geralmente não apresenta contraindicações documentadas aqui, mas requer avaliação clínica individual.
+------------------------------------------------------------
+PAR: Lepirudin + Melatonin
+--------------------
+**[NENHUM CONFLITO DETECTADO]** | Não foram encontradas interações negativas graves nesta base de dados para Lepirudin + Melatonin. O uso conjunto geralmente não apresenta contraindicações documentadas aqui, mas requer avaliação clínica individual.
+------------------------------------------------------------
+PAR: Lepirudin + B-Complex
+--------------------
+**[NENHUM CONFLITO DETECTADO]** | Não foram encontradas interações negativas graves nesta base de dados para Lepirudin + B-Complex. O uso conjunto geralmente não apresenta contraindicações documentadas aqui, mas requer avaliação clínica individual.
+------------------------------------------------------------
+PAR: Lepirudin + Zinc
+--------------------
+**[NENHUM CONFLITO DETECTADO]** | Não foram encontradas interações negativas graves nesta base de dados para Lepirudin + Zinc. O uso conjunto geralmente não apresenta contraindicações documentadas aqui, mas requer avaliação clínica individual.
+------------------------------------------------------------
+PAR: Lepirudin + Bromopride
+--------------------
+**[NENHUM CONFLITO DETECTADO]** | Não foram encontradas interações negativas graves nesta base de dados para Lepirudin + Bromopride. O uso conjunto geralmente não apresenta contraindicações documentadas aqui, mas requer avaliação clínica individual.
+------------------------------------------------------------
+PAR: Lepirudin + Simvastatin
+--------------------
+**[NENHUM CONFLITO DETECTADO]** | Não foram encontradas interações negativas graves nesta base de dados para Lepirudin + Simvastatin. O uso conjunto geralmente não apresenta contraindicações documentadas aqui, mas requer avaliação clínica individual.
+------------------------------------------------------------
+PAR: Lepirudin + Metformin
+--------------------
+**[NENHUM CONFLITO DETECTADO]** | Não foram encontradas interações negativas graves nesta base de dados para Lepirudin + Metformin. O uso conjunto geralmente não apresenta contraindicações documentadas aqui, mas requer avaliação clínica individual.
+------------------------------------------------------------
+PAR: Lepirudin + Folic Acid
+--------------------
+**[NENHUM CONFLITO DETECTADO]** | Não foram encontradas interações negativas graves nesta base de dados para Lepirudin + Folic Acid. O uso conjunto geralmente não apresenta contraindicações documentadas aqui, mas requer avaliação clínica individual.
+------------------------------------------------------------
