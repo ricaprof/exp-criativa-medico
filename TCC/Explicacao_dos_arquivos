@@ -1,0 +1,62 @@
+Dataset Split (Train, Validation, Test)
+
+Os arquivos train.jsonl, validation.jsonl e test.jsonl estão presentes no repositório porque o dataset foi dividido seguindo boas práticas de Machine Learning e treinamento de modelos de linguagem (LLMs). Essa divisão permite treinar e avaliar o modelo de forma correta, evitando que ele apenas memorize os dados.
+
+Train (Treino)
+
+O conjunto train é utilizado para treinar o modelo. Durante essa etapa, o modelo analisa os dados e ajusta seus pesos internos para aprender os padrões presentes no dataset.
+
+Exemplo:
+
+Input:
+What is the interaction between Lepirudin and Apixaban?
+
+Output:
+Apixaban may increase the anticoagulant activities of Lepirudin.
+
+Com vários exemplos semelhantes, o modelo aprende como identificar e explicar interações medicamentosas.
+
+Normalmente o conjunto de treino representa cerca de 70% a 80% do dataset total.
+
+Validation (Validação)
+
+O conjunto validation é utilizado durante o treinamento para verificar se o modelo está melhorando ao longo do processo.
+
+Ele serve para:
+
+- ajustar hiperparâmetros
+- evitar overfitting (quando o modelo memoriza os dados)
+- selecionar a melhor versão do modelo durante o treinamento
+
+O modelo não aprende diretamente com esses dados, eles servem apenas para avaliação intermediária.
+
+Normalmente representa cerca de 10% do dataset.
+
+Test (Teste)
+
+O conjunto test é utilizado apenas no final do treinamento para medir o desempenho real do modelo.
+
+Ele responde à seguinte pergunta:
+
+O modelo consegue funcionar corretamente com dados que ele nunca viu antes?
+
+Exemplo de entrada:
+
+Input:
+What is the interaction between Warfarin and Aspirin?
+
+Se esse exemplo não estava presente no conjunto de treino, o resultado indica se o modelo realmente aprendeu o padrão ou apenas memorizou os dados.
+
+Distribuição do Dataset
+
+O dataset original contém aproximadamente 1.048.576 registros de interações medicamentosas.
+
+A divisão aproximada utilizada foi:
+
+| Tipo       | Quantidade aproximada |
+| ---------- | --------------------- |
+| Train      | ~840.000              |
+| Validation | ~100.000              |
+| Test       | ~100.000              |
+
+Essa divisão permite realizar treinamento, ajuste e avaliação do modelo de forma confiável, seguindo práticas comuns em pesquisas de Inteligência Artificial e Machine Learning.
